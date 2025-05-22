@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8dc;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  h1 {
+    color: #444;
+    font-size: 2em;
+  }
+  
+  .emoji {
+    font-size: 1.2em;
+  }
+  
+  .options {
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  .option {
+    background-color: #f4c542;
+    color: #fff;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 280px;
+    text-align: left;
+  }
+  
+  .option:hover {
+    background-color: #e0ad29;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #feedback {
+    margin-top: 20px;
+    font-size: 20px;
+    color: red;
+  }
+  
+  #countdown {
+    font-size: 48px;
+    color: #ff4081;
+    margin-top: 30px;
+  }
+  
+  #answer {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  
+  .clickable {
+    font-size: 32px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .clickable:hover {
+    transform: scale(1.3);
+  }

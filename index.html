@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Who Are You?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Who are you? <span class="emoji">🤔✨</span></h1>
+
+  <div class="options">
+    <button class="option" onclick="wrongAnswer()">a. Immilda 🧚‍♀</button><br />
+    <button class="option" onclick="wrongAnswer()">b. Melda 🐱‍👓</button><br />
+    <button class="option" onclick="wrongAnswer()">c. Milda 🦄</button><br />
+    <button class="option" onclick="startCountdown()">d. idk, tell me the correct answer 🤷‍♂</button>
+  </div>
+
+  <div id="feedback" class="hidden wrong">Your answer is wrong!</div>
+  <div id="countdown" class="hidden">3</div>
+  <div id="answer" class="hidden">
+    The correct answer is: <strong>Pak Yayat's daughter🙂</strong>!
+    <br /><br />
+    Click this emoji to continue:
+    <span id="nextEmoji" class="clickable">🎂</span>
+  </div>
+
+  <script>
+    function wrongAnswer() {
+      document.getElementById('feedback').classList.remove('hidden');
+      document.getElementById('feedback').textContent = 'Your answer is wrong!';
+    }
+
+    function startCountdown() {
+      document.getElementById('feedback').classList.add('hidden');
+      const countdownEl = document.getElementById('countdown');
+      countdownEl.classList.remove('hidden');
+      let count = 3;
+      countdownEl.textContent = count;
+
+      const interval = setInterval(() => {
+        count--;
+        countdownEl.textContent = count;
+        if (count === 0) {
+          clearInterval(interval);
+          countdownEl.classList.add('hidden');
+          document.getElementById('answer').classList.remove('hidden');
+        }
+      }, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const emojiBtn = document.getElementById('nextEmoji');
+      emojiBtn.addEventListener('click', () => {
+        window.location.href = 'birthday.html';
+      });
+    });
+  </script>
+</body>
+</html>

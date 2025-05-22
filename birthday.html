@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>생일 축하해요!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+    body {
+      font-family: 'Bubblegum Sans', cursive;
+      background-color: #fff066;
+      text-align: center;
+      padding: 80px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      color: #ff6f00;
+      font-size: 5em;
+      animation: shake 1.5s infinite;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
+    .emoji {
+      font-size: 70px;
+      margin: 20px 0 40px;
+      animation: bounce 1.5s infinite;
+      user-select: none;
+    }
+
+    .characters {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    .char {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floaty 3s ease-in-out infinite;
+    }
+
+    .char img {
+      border-radius: 15px;
+      width: 180px;
+      height: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .char-name {
+      margin-top: 15px;
+      font-weight: 700;
+      font-size: 1.3em;
+      color: #333;
+    }
+
+    /* Animations */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0); }
+      25% { transform: rotate(6deg); }
+      50% { transform: rotate(0); }
+      75% { transform: rotate(-6deg); }
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Confetti */
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #ff6f00;
+      opacity: 0.9;
+      top: 0;
+      animation-name: confetti-fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      border-radius: 3px;
+      z-index: 9999;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>생일 축하해요!</h1>
+  <div class="emoji">🎉🎂✨</div>
+
+  <div class="characters">
+    <div class="char">
+      <img src="asahi.jpg" alt="Asahi" />
+    </div>
+    <div class="char">
+      <img src="jamet.jpg" alt="jamet" />
+    </div>
+    <div class="char">
+      <img src="renjun.jpg" alt="Renjun" />
+    </div>
+  </div>
+
+  <!-- Musik autoplay (MP3 harus tersedia) -->
+  <audio autoplay loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Confetti generator
+    const colors = ['#ff6f00', '#ffa000', '#ffd54f', '#ffcc80', '#fff176'];
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+      confetti.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 6000);
+    }
+
+    // Create confetti every 200ms
+    setInterval(createConfetti, 200);
+  </script>
+</body>
+</html>
